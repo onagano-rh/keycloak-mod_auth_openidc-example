@@ -1,0 +1,29 @@
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:22.0
+    ports:
+      - "8180:8080"
+    volumes:
+      - keycloak-data:/opt/keycloak/data
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: password
+    command: ["start-dev"]
+
+  apache:
+    build: ./httpd
+    ports:
+      - "8080:80"
+    depends_on:
+      - keycloak
+
+  python:
+    build: ./python
+    ports:
+      - "18080:8000"
+    depends_on:
+      - apache
+
+volumes:
+  keycloak-data:
+
