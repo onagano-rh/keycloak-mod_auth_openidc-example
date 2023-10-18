@@ -33,7 +33,12 @@ Keycloakの管理画面に admin/password でログインし以下の設定を�
 - reverse-proxy-app クライアントを登録
   - Redirect URLが http://localhost:8080/app/* になるようにする
   - コンフィデンシャルクライアントとして登録し、シークレットをメモして ./httpd/my-proxy.conf を編集しておく
-    - `docker-compose restart apache` で再起動が必要
+    - 設定ファイルを更新したので再起動が必要
+      ```shell
+      docker-compose down
+      docker-compose build
+      docker-compose up
+      ```
     - パブリッククライアントでPKCEを使えるかどうかは未確認
 - テスト用のユーザを作成
 
@@ -45,7 +50,7 @@ Frontend URLの設定も必要になる。
 
 4. 動作確認
 
-http://localhost:8080/app/ 以下の任意のURLでアクセスするとdemoレルムへのログインが求められ、
+http://localhost:8080/app/aaa 等の /app 以下の任意のURLでアクセスするとdemoレルムへのログインが求められ、
 Pythonのhttp.serverが表示するHTTPヘッダーに"OIDC_CLAIM_"で始まるものが含まれることを
 確認する。
 
