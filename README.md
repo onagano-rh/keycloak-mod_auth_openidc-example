@@ -32,14 +32,7 @@ Keycloakの管理画面に admin/password でログインし以下の設定を�
 - demo レルムを作成
 - reverse-proxy-app クライアントを登録
   - Redirect URLが http://localhost:8080/app/* になるようにする
-  - コンフィデンシャルクライアントとして登録し、シークレットをメモして ./httpd/my-proxy.conf を編集しておく
-    - 設定ファイルを更新したので再起動が必要
-      ```shell
-      docker-compose down
-      docker-compose build
-      docker-compose up
-      ```
-    - パブリッククライアントでPKCEを使えるかどうかは未確認
+  - 設定ウィザードの通りパブリッククライアントで可。`OIDCPKCEMethod`の設定でPKCEを有効にしている
 - テスト用のユーザを作成
 
 また、ApacheからKeycloakへは内部的なURL http://keycloak:8080 でアクセスできるが、
