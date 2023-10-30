@@ -31,7 +31,8 @@ Keycloakの管理画面に admin/password でログインし以下の設定を�
 
 - demo レルムを作成
 - reverse-proxy-app クライアントを登録
-  - Redirect URLが http://localhost:8080/app/* になるようにする
+  - Redirect URLが http://localhost:8080/app/callback になるようにする(`OIDCRedirectURI`にあわせる)
+  - Valid post logout redirect URIsに http://localhost:8080/ を含める(保護されていない場所を指定しループを避ける)
   - 設定ウィザードの通りパブリッククライアントで可。`OIDCPKCEMethod`の設定でPKCEを有効にしている
 - テスト用のユーザを作成
 

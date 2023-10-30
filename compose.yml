@@ -8,6 +8,7 @@ services:
     environment:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: password
+      QUARKUS_HTTP_ACCESS_LOG_ENABLED: "true"
     command: ["start-dev"]
 
   apache:
