@@ -34,6 +34,11 @@ Keycloakの管理画面に admin/password でログインし以下の設定を�
   - Redirect URLが http://localhost:8080/app/callback になるようにする(`OIDCRedirectURI`にあわせる)
   - Valid post logout redirect URIsに http://localhost:8080/ を含める(保護されていない場所を指定しループを避ける)
   - 設定ウィザードの通りパブリッククライアントで可。`OIDCPKCEMethod`の設定でPKCEを有効にしている
+  - ログアウト用の設定
+    - "Front channel logout: Off"
+    - "Backchannel logout URL: http://apache/app/callback"
+      - Keycloakからはlocalhostでアクセスできないためホスト名はapacheとなる
+      - 現状では [このプラグインが提供するログアウトエンドポイント](https://github.com/OpenIDC/mod_auth_openidc/wiki/OpenID-Connect-Session-Management#logout) を動作できていない。[IDトークンを用いて直接end_session_endpointを呼ぶ方法](https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.6/html/securing_applications_and_services_guide/oidc#logout) ではログアウトできコールバックも呼べている
 - テスト用のユーザを作成
 
 また、ApacheからKeycloakへは内部的なURL http://keycloak:8080 でアクセスできるが、
