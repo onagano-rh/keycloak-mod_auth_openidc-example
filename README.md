@@ -5,7 +5,7 @@
 
 1. プラグインの配置
 
-[mod_auth_openidc-2.4.14.4-1.el8.x86_64.rpm](https://github.com/OpenIDC/mod_auth_openidc/releases) をダウンロードし ./httpd/ に置く。
+[mod_auth_openidc-2.4.15-1.el8.x86_64.rpm](https://github.com/OpenIDC/mod_auth_openidc/releases) をダウンロードし ./httpd/ に置く。
 バージョンが異なる場合は適宜 ./httpd/Dockerfile も変更すること。
 
 2. イメージのビルドと実行
